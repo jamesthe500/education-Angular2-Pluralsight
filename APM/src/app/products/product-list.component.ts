@@ -12,6 +12,7 @@ export class ProductListComponent {
    imageWidth: number = 50;
    imageMargin: number = 2;
    showImage; boolean = false;
+   listFilter: string = 'cart';
    products: any[] = [
     {
         "productId": 1,
@@ -19,7 +20,7 @@ export class ProductListComponent {
         "productCode": "GDN-0011",
         "releaseDate": "March 19, 2016",
         "description": "Leaf rake with 48-inch wooden handle.",
-        "price": 19.95,
+        "price": 19.9019,
         "starRating": 3.2,
         "imageUrl": "http://openclipart.org/image/300px/svg_to_png/26215/Anonymous_Leaf_Rake.png"
     },
