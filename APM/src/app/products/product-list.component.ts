@@ -14,7 +14,17 @@ export class ProductListComponent implements OnInit {
    imageWidth: number = 50;
    imageMargin: number = 2;
    showImage; boolean = false;
-   listFilter: string = 'cart';
+   
+   _listFilter: string;
+   get listFilter(): string {
+       return this._listFilter;
+   }
+   set listFilter(value:string) {
+       this._listFilter = value;
+       this.filteredProducts= this.listFilter ? this.performFilter(this.listFilter) : this.products;
+   }
+
+   filteredProducts: IProduct[];
    products: IProduct[] = [
     {
         "productId": 1,
@@ -37,6 +47,16 @@ export class ProductListComponent implements OnInit {
         "imageUrl": "http://openclipart.org/image/300px/svg_to_png/58471/garden_cart.png"
     }
    ];
+
+   constructor() {
+       this.filteredProducts = this.products; // sets the filtered list to all products for default
+       this.listFilter = 'cart'; // sets the filter to cart, for some reason.
+   } // using a class constructor to set default values for more complex properties
+
+   performFilter(filterBy: string): IProduct[] {
+       filterBy = filterBy.toLocaleLowerCase();
+       return this.products.filter((product: IProduct) => product.productName.toLocaleLowerCase().indexOf(filterBy) !== -1); // for each item in the array, check that it contains the string. If it appears anywhere, add it to the returned values.
+   }
 
    toggleImage(): void {
        this.showImage = !this.showImage;
