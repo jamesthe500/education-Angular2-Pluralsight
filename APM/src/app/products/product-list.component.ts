@@ -49,9 +49,13 @@ export class ProductListComponent implements OnInit {
    ];
 
    constructor() {
-       this.filteredProducts = this.products; // sets the filtered list to all products for default
-       this.listFilter = 'cart'; // sets the filter to cart, for some reason.
-   } // using a class constructor to set default values for more complex properties
+       this.filteredProducts = this.products; 
+       this.listFilter = 'cart';
+   }
+
+   onRatingClicked(message: string): void {
+       this.pageTitle = 'Product List: ' + message;
+   }
 
    performFilter(filterBy: string): IProduct[] {
        filterBy = filterBy.toLocaleLowerCase();
@@ -65,4 +69,6 @@ export class ProductListComponent implements OnInit {
    ngOnInit(): void {
        console.log('In OnInit');
    }
+
+   onNotify(message: string): void {}
 }
