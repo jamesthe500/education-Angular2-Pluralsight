@@ -1,7 +1,6 @@
 
 // 2. next the decorator
 import { Component } from '@angular/core';
-import { ProductService } from './products/product.service';
 @Component({
   selector: 'pm-root',
   template: `
@@ -19,8 +18,7 @@ import { ProductService } from './products/product.service';
         <router-outlet></router-outlet>
       </div>
     </div>
-  `,
-  providers: [ ProductService ]
+  `
 })
 
 // 1. create the class first (a preference)
